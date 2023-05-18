@@ -29,36 +29,18 @@ app.post('/api/books', (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 });
 
+app.get('/api/books/:id', (req, res, next) => {
+    Book;findOne({ _id: req.params.id})
+        .then(thing => res.status(200).json(book))
+        .catch(error => res.status(404).json({ error })); 
+});
+
 app.get('/api/books', (req, res, next) => {
-    const book = [
-        {
-            "id": "1",
-  "userId" : "clc4wj5lh3gyi0ak4eq4n8syr",
-  "title" : "Milwaukee Mission",
-  "author": "Elder Cooper",
-  "imageUrl" : "https://via.placeholder.com/206x260",
-  "year" : 2021,
-  "genre" : "Policier",
-  "ratings" : [{
-    "userId" : "1",
-    "grade": 5
-  },
-    {
-      "userId" : "1",
-      "grade": 5
-    },
-    {
-      "userId" : "clc4wj5lh3gyi0ak4eq4n8syr",
-      "grade": 5
-    },
-    {
-      "userId" : "1",
-      "grade": 5
-    }],
-  "averageRating": 3
-        }
-    ];
-    res.status(200).json(book);
-})
+    Book.find()
+        .then(books => res.status(200).json(books))
+        .catch(error => res.status(400).json({ error }));
+});
+
+
 
 module.exports = app;
