@@ -29,6 +29,18 @@ app.post('/api/books', (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 });
 
+app.put('/api/books/:id', (req, res, next) => {
+    Book.updateOne({ _id: req.params.id}, {...req.body, _id: req.params.id})
+        .then(() => res.status(200).json({ message: 'livre modifié'}))
+        .catch(error => res.status(400).json({ error }));
+});
+
+app.delete('/api/books/:id', (req, res, next) => {
+    Book.deleteOne({ _id: req.params.id })
+        .then(() => res.status(200).json({ message: 'livre supprimé'}))
+        .catch(error => res.status(400).json({ error }));
+});
+
 app.get('/api/books/:id', (req, res, next) => {
     Book;findOne({ _id: req.params.id})
         .then(thing => res.status(200).json(book))
