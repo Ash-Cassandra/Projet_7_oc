@@ -23,13 +23,13 @@ exports.deleteBook = (req, res, next) => {
 }
 
 exports.findOneBook = (req, res, next) => {
-    Book;findOne({ _id: req.params.id})
-        .then(thing => res.status(200).json(book))
+    Book.findOne({ _id: req.params.id})
+        .then(book => res.status(200).json(book))
         .catch(error => res.status(404).json({ error })); 
 }
 
 exports.findAllBook = (req, res, next) => {
     Book.find()
-        .then(books => res.status(200).json(books))
-        .catch(error => res.status(400).json({ error }));
+        .then((books) => res.status(200).json(books))
+        .catch((error) => res.status(400).json({ error }));
 }
