@@ -28,6 +28,7 @@ exports.findOneBook = (req, res, next) => {
         .catch(error => res.status(404).json({ error })); 
 }
 
+
 exports.findAllBook = (req, res, next) => {
     Book.find()
         .then((books) => res.status(200).json(books))
