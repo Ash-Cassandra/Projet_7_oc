@@ -7,7 +7,7 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://user1:user1@ash.vxla1es.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://johnDoe:johnDoe@ash.vxla1es.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
   });
 
   app.use('/api/books', bookRoutes);
-  app.use('api/auth', userRoutes);
+  app.use('/api/auth', userRoutes);
   app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
